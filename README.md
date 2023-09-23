@@ -1,5 +1,5 @@
-## Un-official API to Check Username Game By Account ID
-
+Un-official API to Check Username Game By Account ID
+------------
 [![CHECK IGN](https://img.shields.io/badge/CHECK%20IGN-September%2024%2C%202023-36ade1.svg)](https://github.com/aditamagf/check-ign)
 [![CodeFactor](https://www.codefactor.io/repository/github/aditamagf/check-ign/badge)](https://www.codefactor.io/repository/github/aditamagf/check-ign)
 [![GitHub Issues](https://img.shields.io/github/issues/aditamagf/check-ign.svg)](https://github.com/aditamagf/check-ign/issues)
@@ -8,7 +8,8 @@
 [![License](https://img.shields.io/github/license/aditamagf/check-ign.svg)](https://github.com/aditamagf/check-ign/blob/main/LICENSE)
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Faditamagf%2Fcheck-ign&count_bg=%232BCCE3&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=views&edge_flat=false)](https://github.com/aditamagf/check-ign)
 
-## :coffee: Buy Me a Coffee
+:coffee: Buy Me a Coffee
+------------
 [https://trakteer.id/aditamagf/tip](https://trakteer.id/aditamagf/tip)
 
 Installation
@@ -17,8 +18,8 @@ Installation
 composer require aditamagf/check-ign
 ```
 
-## Usage
-
+Usage
+------------
 ```php
 require('src/Games.php');
 
@@ -30,12 +31,12 @@ echo $api->MOBILE_LEGENDS('<userID>', '<zoneID>');
 echo $api->FREEFIRE('<userID>');
 ```
 
-## License
-
+License
+------------
 This open-source software is distributed under the MIT License. See LICENSE.md
 
-## Contributing
-
+Contributing
+------------
 All kinds of contributions are welcome - code, tests, documentation, bug reports, new features, etc...
 
 - Send feedbacks.
