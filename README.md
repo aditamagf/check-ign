@@ -16,7 +16,9 @@
 ```php
 require('src/Games.php');
 
-$api = new ApiGames();
+use Aditdev\ApiGames;
+
+$api = new ApiGames;
 
 echo $api->MOBILE_LEGENDS('<userID>', '<zoneID>');
 echo $api->FREEFIRE('<userID>');
