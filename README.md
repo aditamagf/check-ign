@@ -11,6 +11,12 @@
 ## :coffee: Buy Me a Coffee
 [https://trakteer.id/aditamagf/tip](https://trakteer.id/aditamagf/tip)
 
+Installation
+------------
+```
+composer require aditamagf/check-ign
+```
+
 ## Usage
 
 ```php
