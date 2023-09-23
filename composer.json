@@ -1,0 +1,19 @@
+{
+    "name": "aditamagf/check-ign",
+    "description": "Un-official API to Check Username Game By Account ID",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Aditdev\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "aditamagf",
+            "email": "business@aditdev.id"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
