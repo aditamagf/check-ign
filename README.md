@@ -1,4 +1,4 @@
-Un-official API to Check Username Game By Account ID
+Unofficial API to check usernames in games using account IDs.
 ------------
 [![CHECK IGN](https://img.shields.io/badge/CHECK%20IGN-September%2024%2C%202023-36ade1.svg)](https://github.com/aditamagf/check-ign)
 [![Packagist](https://img.shields.io/packagist/v/aditamagf/check-ign)](https://packagist.org/packages/aditamagf/check-ign)
