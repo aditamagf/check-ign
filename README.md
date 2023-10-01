@@ -33,7 +33,7 @@ echo $api->MOBILE_LEGENDS('<userID>', '<zoneID>');
 echo $api->FREEFIRE('<userID>');
 ```
 
-List of Game
+List of Games
 ------------
 | Game  | Code |
 |-------|------|
