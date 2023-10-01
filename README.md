@@ -33,6 +33,13 @@ echo $api->MOBILE_LEGENDS('<userID>', '<zoneID>');
 echo $api->FREEFIRE('<userID>');
 ```
 
+List of Game
+------------
+| Game  | Code |
+|-------|------|
+|8 Ball Pool|EIGHT_BALL_POOL|
+
+
 License
 ------------
 This open-source software is distributed under the MIT License. See LICENSE.md
