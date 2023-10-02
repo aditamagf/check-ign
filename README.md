@@ -12,7 +12,8 @@ PHP Library for Checking a Game Nickname Based on an Account ID
 
 :coffee: Buy Me a Coffee
 ------------
-[https://trakteer.id/aditamagf/tip](https://trakteer.id/aditamagf/tip)
+[https://ko-fi.com/aditamagf](ko-fi.com/aditamagf)
+[https://trakteer.id/aditamagf/tip](trakteer.id/aditamagf/tip)
 
 Installation
 ------------
