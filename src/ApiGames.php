@@ -9,7 +9,48 @@ class ApiGames
     const API_BOSBOSGAMES = 'https://www.bosbosgames.com/web/infullRequest.do';
     const API_XDG = 'https://xdg-hk.xd.com/api/v1/user/get_role?client_id=zuRsHFfcY2KtVql3&server_id=global-release&character_id=';
     const API_DANCINGIDOL = 'http://dancingidol.uniuhk.com/api/role/info?roleId=';
-
+    public function HONKAI_STAR_RAIL($id, $otherid = '')
+    {
+        if (strtolower($otherid) == 'asia' || strtolower($otherid) == 'os_asia') {
+            $otherid = 'prod_official_asia';
+        } elseif (strtolower($otherid) == 'europe' || strtolower($otherid) == 'os_euro') {
+            $otherid = 'prod_official_eur';
+        } elseif (strtolower($otherid) == 'usa' || strtolower($otherid) == 'os_usa') {
+            $otherid = 'prod_official_usa';
+        } elseif (strtolower($otherid) == 'tw_hk_mo' || strtolower($otherid) == 'os_cht') {
+            $otherid = 'prod_official_cht';
+        }
+        $postdata = [
+            'voucherPricePoint.id' => 855377,
+            'voucherPricePoint.price' => 479000.0,
+            'voucherPricePoint.variablePrice' => 0,
+            'n' => '12/7/2022-1853',
+            'email' => '',
+            'userVariablePrice' => 0,
+            'order.data.profile' => 'eyJuYW1lIjoiICIsImRhdGVvZmJpcnRoIjoiIiwiaWRfbm8iOiIifQ==',
+            'user.userId' => $id,
+            'user.zoneId' => $otherid,
+            'msisdn' => '',
+            'voucherTypeName' => 'HONKAI_STAR_RAIL',
+            'shopLang' => 'id_ID',
+            'voucherTypeId' => 5,
+            'gvtId' => 460,
+            'checkoutId' => '',
+            'affiliateTrackingId' => '',
+            'impactClickId' => '',
+            'anonymousId' => ''
+        ];
+        $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
+        if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
+            return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
+        } else {
+            if ($response['success'] && empty($response['errorMsg'])) {
+                return json_encode(['status' => 200, 'nickname' => urldecode($response['confirmationFields']['username'])]);
+            } else {
+                return json_encode(['status' => 400, 'msg' => 'Invalid ID']);
+            }
+        }
+    }
     public function EIGHT_BALL_POOL($id, $otherid = '')
     {
         $postdata = [
