@@ -3,19 +3,26 @@
 /*
 
 8 Ball Pool                             = EIGHT_BALL_POOL           2180533717
+Aether Gazer                            = AETHER_GAZER              53687921700
 Arena of Valor                          = AOV                       2748846783202461
+Asphalt 9: Legends                      = GAMELOFT_A9               3e031e | ios (IOS)
 AU2 Mobile                              = AU_TWO_MOBILE             662311
 Auto Chess                              = AUTO_CHESS                GTFWF1
 Azur Lane                               = AZUR_LANE                 271394707 | 4 (Washington)
 Badlanders                              = BAD_LANDERS               3542797653 | 11001 (Global)
+BarbarQ                                 = ELECSOUL                  DV0165253
+Basketrio                               = BASKETRIO                 93398 | 2 (Buzzer Beater)
 Call of Duty Mobile                     = CALL_OF_DUTY              10808316016143544796
+Captain Tsubasa: Dream Team             = CAPTAIN_TSUBASA           123456789
 Crisis Action                           = CA_HEROGAMES              483395457 | 2003 (Avenger)
 Dragon City                             = DRAGON_CITY               3281168132375957269
 Dragon Raja                             = ZULONG_DRAGON_RAJA        1333896351
 EOS RED                                 = EOS_RED                   Md0P0q2sdZbkGaYTYN2yZSJhCj83 | 15 (MARIE)
+Farlight 84                             = FARLIGHT84                12787216
 Football Master 2                       = FOOTBALL_MASTER           SXM2_soccer2_prd_296_ia8kvv
 Free Fire                               = FREEFIRE                  116502997
 Genshin Impact                          = GENSHIN_IMPACT            700001772 | os_euro (Europe)
+Hago                                    = HAGO                      31148107
 Identity V                              = IDENTITY_V                839263 | 2001 (Asia)
 Laplace M                               = ZLONGAME                  500218273
 League of Legends: Wild Rift            = WILD_RIFT                 Westbourne#SEA
@@ -71,6 +78,32 @@ class ApiGames
         }
     }
 
+    public function AETHER_GAZER($id, $otherid = '')
+    {
+        $postdata = [
+            'voucherPricePoint.id'              => 62,
+            'voucherPricePoint.price'           => 765900.0,
+            'voucherPricePoint.variablePrice'   => 0,
+            'user.userId'                       => $id,
+            'user.zoneId'                       => '',
+            'voucherTypeName'                   => '547-AETHER_GAZER',
+            'lvtId'                             => 11840,
+            'shopLang'                          => 'id_ID',
+            'dynamicSkuToken'                   => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkeW5hbWljU2t1SW5mbyI6IntcInNrdUlkXCI6XCJjb20ueW9zdGFyLmFldGhlcmdhemVyLnNoaWZ0aW5nZmxvd2VyNVwiLFwiZXZlbnRQYWNrYWdlXCI6XCIwXCIsXCJkZW5vbUltYWdlVXJsXCI6XCJodHRwczovL2NkbjEuY29kYXNob3AuY29tL2ltYWdlcy81NDdfM2QyMTBiNzUtNTJkYi00YjUxLTgzMGYtZDYxMTFiNjFkNDQ5X0FFVEhFUiBHQVpFUl9pbWFnZS9Db2RhX0FHX1NLVWltYWdlcy8yOTkwLnBuZ1wiLFwiZGVub21OYW1lXCI6XCIyOTkwIFNoaWZ0aW5nIEZsb3dlcnNcIixcImRlbm9tQ2F0ZWdvcnlOYW1lXCI6XCJTaGlmdGluZyBGbG93ZXJzXCIsXCJ0YWdzXCI6W10sXCJjb3VudHJ5Mk5hbWVcIjpcIklEXCIsXCJsdnRJZFwiOjExODQwfSJ9.qyp6OeAstvp7_0tRS4vWuvcko6D4quDUGTTRMWrbrHM',
+            'pricePointDynamicSkuToken'         => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkeW5hbWljU2t1SW5mbyI6IntcInBjSWRcIjoyMjAsXCJwcmljZVwiOjc2NTkwMC4wLFwiY3VycmVuY3lcIjpcIklEUlwiLFwiYXBpUHJpY2VcIjo3NjU5MDAuMCxcImFwaVByaWNlQ3VycmVuY3lcIjpcIklEUlwiLFwicHJpY2VCZWZvcmVUYXhcIjo2OTAwMDAuMCxcInRheEFtb3VudFwiOjc1OTAwLjAsXCJza3VJZFwiOlwiY29tLnlvc3Rhci5hZXRoZXJnYXplci5zaGlmdGluZ2Zsb3dlcjVcIixcImx2dElkXCI6MTE4NDB9In0.8WW45qBicqad7rTGEFzMOEWUmkxEwIm76-nd0yVBTYc'
+        ];
+        $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
+        if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
+            return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
+        } else {
+            if ($response['success'] && empty($response['errorMsg'])) {
+                return json_encode(['status' => 200, 'nickname' => urldecode($response['confirmationFields']['username'])]);
+            } else {
+                return json_encode(['status' => 400, 'msg' => 'Invalid ID']);
+            }
+        }
+    }
+
     public function AOV($id, $otherid = '')
     {
         $postdata = [
@@ -88,6 +121,29 @@ class ApiGames
         } else {
             if ($response['success'] && empty($response['errorMsg'])) {
                 return json_encode(['status' => 200, 'nickname' => urldecode($response['confirmationFields']['roles'][0]['role'])]);
+            } else {
+                return json_encode(['status' => 400, 'msg' => 'Invalid ID']);
+            }
+        }
+    }
+
+    public function GAMELOFT_A9($id, $otherid = '')
+    {
+        $postdata = [
+            'voucherPricePoint.id'              => 114548,
+            'voucherPricePoint.price'           => 479700.0000,
+            'voucherPricePoint.variablePrice'   => 0,
+            'user.userId'                       => $id,
+            'user.zoneId'                       => $otherid,
+            'voucherTypeName'                   => 'GAMELOFT_A9',
+            'shopLang'                          => 'id_ID'
+        ];
+        $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
+        if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
+            return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
+        } else {
+            if ($response['success'] && empty($response['errorMsg'])) {
+                return json_encode(['status' => 200, 'nickname' => urldecode($response['confirmationFields']['username'])]);
             } else {
                 return json_encode(['status' => 400, 'msg' => 'Invalid ID']);
             }
@@ -173,6 +229,52 @@ class ApiGames
         }
     }
 
+    public function ELECSOUL($id, $otherid = '')
+    {
+        $postdata = [
+            'voucherPricePoint.id'              => 5171,
+            'voucherPricePoint.price'           => 660000.0000,
+            'voucherPricePoint.variablePrice'   => 0,
+            'user.userId'                       => $id,
+            'user.zoneId'                       => '1',
+            'voucherTypeName'                   => 'ELECSOUL',
+            'shopLang'                          => 'id_ID'
+        ];
+        $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
+        if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
+            return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
+        } else {
+            if ($response['success'] && empty($response['errorMsg'])) {
+                return json_encode(['status' => 200, 'nickname' => urldecode($response['result'])]);
+            } else {
+                return json_encode(['status' => 400, 'msg' => 'Invalid ID or Server']);
+            }
+        }
+    }
+
+    public function BASKETRIO($id, $otherid = '')
+    {
+        $postdata = [
+            'voucherPricePoint.id'              => 147203,
+            'voucherPricePoint.price'           => 832500.0000,
+            'voucherPricePoint.variablePrice'   => 0,
+            'user.userId'                       => $id,
+            'user.zoneId'                       => $otherid,
+            'voucherTypeName'                   => 'BASKETRIO',
+            'shopLang'                          => 'id_ID'
+        ];
+        $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
+        if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
+            return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
+        } else {
+            if ($response['success'] && empty($response['errorMsg'])) {
+                return json_encode(['status' => 200, 'nickname' => urldecode($response['confirmationFields']['username'])]);
+            } else {
+                return json_encode(['status' => 400, 'msg' => 'Invalid ID or Server']);
+            }
+        }
+    }
+
     public function CALL_OF_DUTY($id, $otherid = '')
     {
         $postdata = [
@@ -190,6 +292,29 @@ class ApiGames
         } else {
             if ($response['success'] && empty($response['errorMsg'])) {
                 return json_encode(['status' => 200, 'nickname' => urldecode($response['confirmationFields']['roles'][0]['role'])]);
+            } else {
+                return json_encode(['status' => 400, 'msg' => 'Invalid ID']);
+            }
+        }
+    }
+
+    public function CAPTAIN_TSUBASA($id, $otherid = '')
+    {
+        $postdata = [
+            'voucherPricePoint.id'              => 352113,
+            'voucherPricePoint.price'           => 1099000.0000,
+            'voucherPricePoint.variablePrice'   => 0,
+            'user.userId'                       => $id,
+            'user.zoneId'                       => '',
+            'voucherTypeName'                   => 'CAPTAIN_TSUBASA',
+            'shopLang'                          => 'id_ID'
+        ];
+        $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
+        if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
+            return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
+        } else {
+            if ($response['success'] && empty($response['errorMsg'])) {
+                return json_encode(['status' => 200, 'nickname' => urldecode($response['confirmationFields']['username'])]);
             } else {
                 return json_encode(['status' => 400, 'msg' => 'Invalid ID']);
             }
@@ -288,6 +413,32 @@ class ApiGames
         }
     }
 
+    public function FARLIGHT84($id, $otherid = '')
+    {
+        $postdata = [
+            'voucherPricePoint.id'              => 229,
+            'voucherPricePoint.price'           => 559900.0,
+            'voucherPricePoint.variablePrice'   => 0,
+            'user.userId'                       => $id,
+            'user.zoneId'                       => '',
+            'voucherTypeName'                   => 'FARLIGHT84',
+            'lvtId'                             => 4138,
+            'shopLang'                          => 'id_ID',
+            'dynamicSkuToken'                   => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkeW5hbWljU2t1SW5mbyI6IntcInNrdUlkXCI6XCJjb20ubWlyYWNsZWdhbWVzLnNvbGFybGFuZC5sb3Rjb2luXzQwMDBcIixcImV2ZW50UGFja2FnZVwiOlwiMFwiLFwiZGVub21JbWFnZVVybFwiOlwiaHR0cHM6Ly9jZG4xLmNvZGFzaG9wLmNvbS9pbWFnZXMvNzQzXzkwMTk2YjZlLTlkODYtNGM4Ni1hZmJiLTY4NTg0M2QyNzM5Y19GYXJsaWdodCA4NF9pbWFnZS80NzAwX0ZhcmxpZ2h0X0RpYW1vbmRzLnBuZ1wiLFwiZGVub21OYW1lXCI6XCI0NzAwIERpYW1vbmRzXCIsXCJkZW5vbUNhdGVnb3J5TmFtZVwiOlwiVW5jYXRlZ29yaXplZFwiLFwidGFnc1wiOltdLFwiY291bnRyeTJOYW1lXCI6XCJJRFwiLFwibHZ0SWRcIjo0MTM4fSJ9.i442v0Nxnnq09y0r5V9N-xJ6w4x5bd9jhqExylX_u7s',
+            'pricePointDynamicSkuToken'         => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkeW5hbWljU2t1SW5mbyI6IntcInBjSWRcIjoyMjAsXCJwcmljZVwiOjU1OTkwMC4wLFwiY3VycmVuY3lcIjpcIklEUlwiLFwiYXBpUHJpY2VcIjo1NTk5MDAuMCxcImFwaVByaWNlQ3VycmVuY3lcIjpcIklEUlwiLFwicHJpY2VCZWZvcmVUYXhcIjo1MDQ0MTQuMCxcInRheEFtb3VudFwiOjU1NDg2LjAsXCJza3VJZFwiOlwiY29tLm1pcmFjbGVnYW1lcy5zb2xhcmxhbmQubG90Y29pbl80MDAwXCIsXCJsdnRJZFwiOjQxMzh9In0.RXIVBNGby3DdMmpjoqAjDWfyLserZaZ0Ajshqp2ioLM'
+        ];
+        $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
+        if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
+            return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
+        } else {
+            if ($response['success'] && empty($response['errorMsg'])) {
+                return json_encode(['status' => 200, 'nickname' => urldecode($response['confirmationFields']['username'])]);
+            } else {
+                return json_encode(['status' => 400, 'msg' => 'Invalid ID or Server']);
+            }
+        }
+    }
+
     public function FOOTBALL_MASTER($id, $otherid = '')
     {
         $postdata = [
@@ -343,6 +494,29 @@ class ApiGames
             'user.userId'                       => $id,
             'user.zoneId'                       => $otherid,
             'voucherTypeName'                   => 'GENSHIN_IMPACT',
+            'shopLang'                          => 'id_ID'
+        ];
+        $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
+        if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
+            return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
+        } else {
+            if ($response['success'] && empty($response['errorMsg'])) {
+                return json_encode(['status' => 200, 'nickname' => urldecode($response['confirmationFields']['username'])]);
+            } else {
+                return json_encode(['status' => 400, 'msg' => 'Invalid ID or Server']);
+            }
+        }
+    }
+
+    public function HAGO($id, $otherid = '')
+    {
+        $postdata = [
+            'voucherPricePoint.id'              => 16153,
+            'voucherPricePoint.price'           => 544500.0000,
+            'voucherPricePoint.variablePrice'   => 0,
+            'user.userId'                       => $id,
+            'user.zoneId'                       => $otherid,
+            'voucherTypeName'                   => 'HAGO',
             'shopLang'                          => 'id_ID'
         ];
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);

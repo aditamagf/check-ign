@@ -39,19 +39,26 @@ echo $api->FREEFIRE('<userID>');
 | Game                                  | Code                  |
 | ------------------------------------- | --------------------- |
 | 8 Ball Pool                           | EIGHT_BALL_POOL       |
+| Aether Gazer                          | AETHER_GAZER          |
 | Arena of Valor                        | AOV                   |
+| Asphalt 9: Legends                    | GAMELOFT_A9           |
 | AU2 Mobile                            | AU_TWO_MOBILE         |
 | Auto Chess                            | AUTO_CHESS            |
 | Azur Lane                             | AZUR_LANE             |
 | Badlanders                            | BAD_LANDERS           |
+| BarbarQ                               | ELECSOUL              |
+| Basketrio                             | BASKETRIO             |
 | Call of Duty Mobile                   | CALL_OF_DUTY          |
+| Captain Tsubasa: Dream Team           | CAPTAIN_TSUBASA       |
 | Crisis Action                         | CA_HEROGAMES          |
 | Dragon City                           | DRAGON_CITY           |
 | Dragon Raja                           | ZULONG_DRAGON_RAJA    |
 | EOS RED                               | EOS_RED               |
+| Farlight 84                           | FARLIGHT84            |
 | Football Master 2                     | FOOTBALL_MASTER       |
 | Free Fire                             | FREEFIRE              |
 | Genshin Impact                        | GENSHIN_IMPACT        |
+| Hago                                  | HAGO                  |
 | Identity V                            | IDENTITY_V            |
 | Laplace M                             | ZLONGAME              |
 | League of Legends: Wild Rift          | WILD_RIFT             |
