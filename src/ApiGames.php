@@ -57,15 +57,7 @@ class ApiGames
 
     public function EIGHT_BALL_POOL($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 205678,
-            'voucherPricePoint.price'           => 140000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => 'EIGHT_BALL_POOL',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(205678, 140000.0000, 0, $id, '', 'EIGHT_BALL_POOL', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -80,18 +72,7 @@ class ApiGames
 
     public function AETHER_GAZER($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 62,
-            'voucherPricePoint.price'           => 765900.0,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => '547-AETHER_GAZER',
-            'lvtId'                             => 11840,
-            'shopLang'                          => 'id_ID',
-            'dynamicSkuToken'                   => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkeW5hbWljU2t1SW5mbyI6IntcInNrdUlkXCI6XCJjb20ueW9zdGFyLmFldGhlcmdhemVyLnNoaWZ0aW5nZmxvd2VyNVwiLFwiZXZlbnRQYWNrYWdlXCI6XCIwXCIsXCJkZW5vbUltYWdlVXJsXCI6XCJodHRwczovL2NkbjEuY29kYXNob3AuY29tL2ltYWdlcy81NDdfM2QyMTBiNzUtNTJkYi00YjUxLTgzMGYtZDYxMTFiNjFkNDQ5X0FFVEhFUiBHQVpFUl9pbWFnZS9Db2RhX0FHX1NLVWltYWdlcy8yOTkwLnBuZ1wiLFwiZGVub21OYW1lXCI6XCIyOTkwIFNoaWZ0aW5nIEZsb3dlcnNcIixcImRlbm9tQ2F0ZWdvcnlOYW1lXCI6XCJTaGlmdGluZyBGbG93ZXJzXCIsXCJ0YWdzXCI6W10sXCJjb3VudHJ5Mk5hbWVcIjpcIklEXCIsXCJsdnRJZFwiOjExODQwfSJ9.qyp6OeAstvp7_0tRS4vWuvcko6D4quDUGTTRMWrbrHM',
-            'pricePointDynamicSkuToken'         => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkeW5hbWljU2t1SW5mbyI6IntcInBjSWRcIjoyMjAsXCJwcmljZVwiOjc2NTkwMC4wLFwiY3VycmVuY3lcIjpcIklEUlwiLFwiYXBpUHJpY2VcIjo3NjU5MDAuMCxcImFwaVByaWNlQ3VycmVuY3lcIjpcIklEUlwiLFwicHJpY2VCZWZvcmVUYXhcIjo2OTAwMDAuMCxcInRheEFtb3VudFwiOjc1OTAwLjAsXCJza3VJZFwiOlwiY29tLnlvc3Rhci5hZXRoZXJnYXplci5zaGlmdGluZ2Zsb3dlcjVcIixcImx2dElkXCI6MTE4NDB9In0.8WW45qBicqad7rTGEFzMOEWUmkxEwIm76-nd0yVBTYc'
-        ];
+        $postdata = self::buildBodys(62, 765900.0, 0, $id, '', '547-AETHER_GAZER', 11840, 'id_ID', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkeW5hbWljU2t1SW5mbyI6IntcInNrdUlkXCI6XCJjb20ueW9zdGFyLmFldGhlcmdhemVyLnNoaWZ0aW5nZmxvd2VyNVwiLFwiZXZlbnRQYWNrYWdlXCI6XCIwXCIsXCJkZW5vbUltYWdlVXJsXCI6XCJodHRwczovL2NkbjEuY29kYXNob3AuY29tL2ltYWdlcy81NDdfM2QyMTBiNzUtNTJkYi00YjUxLTgzMGYtZDYxMTFiNjFkNDQ5X0FFVEhFUiBHQVpFUl9pbWFnZS9Db2RhX0FHX1NLVWltYWdlcy8yOTkwLnBuZ1wiLFwiZGVub21OYW1lXCI6XCIyOTkwIFNoaWZ0aW5nIEZsb3dlcnNcIixcImRlbm9tQ2F0ZWdvcnlOYW1lXCI6XCJTaGlmdGluZyBGbG93ZXJzXCIsXCJ0YWdzXCI6W10sXCJjb3VudHJ5Mk5hbWVcIjpcIklEXCIsXCJsdnRJZFwiOjExODQwfSJ9.qyp6OeAstvp7_0tRS4vWuvcko6D4quDUGTTRMWrbrHM', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkeW5hbWljU2t1SW5mbyI6IntcInBjSWRcIjoyMjAsXCJwcmljZVwiOjc2NTkwMC4wLFwiY3VycmVuY3lcIjpcIklEUlwiLFwiYXBpUHJpY2VcIjo3NjU5MDAuMCxcImFwaVByaWNlQ3VycmVuY3lcIjpcIklEUlwiLFwicHJpY2VCZWZvcmVUYXhcIjo2OTAwMDAuMCxcInRheEFtb3VudFwiOjc1OTAwLjAsXCJza3VJZFwiOlwiY29tLnlvc3Rhci5hZXRoZXJnYXplci5zaGlmdGluZ2Zsb3dlcjVcIixcImx2dElkXCI6MTE4NDB9In0.8WW45qBicqad7rTGEFzMOEWUmkxEwIm76-nd0yVBTYc');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -106,15 +87,7 @@ class ApiGames
 
     public function AOV($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 8003,
-            'voucherPricePoint.price'           => 300000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => 'AOV',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(8003, 300000.0000, 0, $id, '', 'AOV', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -129,15 +102,7 @@ class ApiGames
 
     public function GAMELOFT_A9($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 114548,
-            'voucherPricePoint.price'           => 479700.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => $otherid,
-            'voucherTypeName'                   => 'GAMELOFT_A9',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(114548, 479700.0000, 0, $id, $otherid, 'GAMELOFT_A9', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -162,15 +127,7 @@ class ApiGames
 
     public function AUTO_CHESS($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 203896,
-            'voucherPricePoint.price'           => 250000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => 'AUTO_CHESS',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(203896, 250000.0000, 0, $id, '', 'AUTO_CHESS', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -185,15 +142,7 @@ class ApiGames
 
     public function AZUR_LANE($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 99716,
-            'voucherPricePoint.price'           => 590000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => $otherid,
-            'voucherTypeName'                   => 'AZUR_LANE',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(99716, 590000.0000, 0, $id, $otherid, 'AZUR_LANE', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -208,15 +157,7 @@ class ApiGames
 
     public function BAD_LANDERS($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 124099,
-            'voucherPricePoint.price'           => 705000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => $otherid,
-            'voucherTypeName'                   => 'BAD_LANDERS',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(124099, 705000.0000, 0, $id, $otherid, 'BAD_LANDERS', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -231,15 +172,7 @@ class ApiGames
 
     public function ELECSOUL($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 5171,
-            'voucherPricePoint.price'           => 660000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '1',
-            'voucherTypeName'                   => 'ELECSOUL',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(5171, 660000.0000, 0, $id, '1', 'ELECSOUL', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -254,15 +187,7 @@ class ApiGames
 
     public function BASKETRIO($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 147203,
-            'voucherPricePoint.price'           => 832500.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => $otherid,
-            'voucherTypeName'                   => 'BASKETRIO',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(147203, 832500.0000, 0, $id, $otherid, 'BASKETRIO', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -277,15 +202,7 @@ class ApiGames
 
     public function CALL_OF_DUTY($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 46251,
-            'voucherPricePoint.price'           => 2000000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => 'CALL_OF_DUTY',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(46251, 2000000.0000, 0, $id, '', 'CALL_OF_DUTY', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -300,15 +217,7 @@ class ApiGames
 
     public function CAPTAIN_TSUBASA($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 352113,
-            'voucherPricePoint.price'           => 1099000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => 'CAPTAIN_TSUBASA',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(352113, 1099000.0000, 0, $id, '', 'CAPTAIN_TSUBASA', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -323,15 +232,7 @@ class ApiGames
 
     public function CA_HEROGAMES($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 3745,
-            'voucherPricePoint.price'           => 300000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => $otherid,
-            'voucherTypeName'                   => 'HEROGAMES',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(3745, 300000.0000, 0, $id, $otherid, 'HEROGAMES', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -346,15 +247,7 @@ class ApiGames
 
     public function DRAGON_CITY($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 254278,
-            'voucherPricePoint.price'           => 479000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => 'DRAGON_CITY',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(254278, 479000.0000, 0, $id, '', 'DRAGON_CITY', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -369,15 +262,7 @@ class ApiGames
 
     public function ZULONG_DRAGON_RAJA($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 75648,
-            'voucherPricePoint.price'           => 1000000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => 'ZULONG_DRAGON_RAJA',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(75648, 1000000.0000, 0, $id, '', 'ZULONG_DRAGON_RAJA', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -392,15 +277,7 @@ class ApiGames
 
     public function EOS_RED($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 182235,
-            'voucherPricePoint.price'           => 852139.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => $otherid,
-            'voucherTypeName'                   => 'EOS_RED',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(182235, 852139.0000, 0, $id, $otherid, 'EOS_RED', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -415,18 +292,7 @@ class ApiGames
 
     public function FARLIGHT84($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 229,
-            'voucherPricePoint.price'           => 559900.0,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => 'FARLIGHT84',
-            'lvtId'                             => 4138,
-            'shopLang'                          => 'id_ID',
-            'dynamicSkuToken'                   => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkeW5hbWljU2t1SW5mbyI6IntcInNrdUlkXCI6XCJjb20ubWlyYWNsZWdhbWVzLnNvbGFybGFuZC5sb3Rjb2luXzQwMDBcIixcImV2ZW50UGFja2FnZVwiOlwiMFwiLFwiZGVub21JbWFnZVVybFwiOlwiaHR0cHM6Ly9jZG4xLmNvZGFzaG9wLmNvbS9pbWFnZXMvNzQzXzkwMTk2YjZlLTlkODYtNGM4Ni1hZmJiLTY4NTg0M2QyNzM5Y19GYXJsaWdodCA4NF9pbWFnZS80NzAwX0ZhcmxpZ2h0X0RpYW1vbmRzLnBuZ1wiLFwiZGVub21OYW1lXCI6XCI0NzAwIERpYW1vbmRzXCIsXCJkZW5vbUNhdGVnb3J5TmFtZVwiOlwiVW5jYXRlZ29yaXplZFwiLFwidGFnc1wiOltdLFwiY291bnRyeTJOYW1lXCI6XCJJRFwiLFwibHZ0SWRcIjo0MTM4fSJ9.i442v0Nxnnq09y0r5V9N-xJ6w4x5bd9jhqExylX_u7s',
-            'pricePointDynamicSkuToken'         => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkeW5hbWljU2t1SW5mbyI6IntcInBjSWRcIjoyMjAsXCJwcmljZVwiOjU1OTkwMC4wLFwiY3VycmVuY3lcIjpcIklEUlwiLFwiYXBpUHJpY2VcIjo1NTk5MDAuMCxcImFwaVByaWNlQ3VycmVuY3lcIjpcIklEUlwiLFwicHJpY2VCZWZvcmVUYXhcIjo1MDQ0MTQuMCxcInRheEFtb3VudFwiOjU1NDg2LjAsXCJza3VJZFwiOlwiY29tLm1pcmFjbGVnYW1lcy5zb2xhcmxhbmQubG90Y29pbl80MDAwXCIsXCJsdnRJZFwiOjQxMzh9In0.RXIVBNGby3DdMmpjoqAjDWfyLserZaZ0Ajshqp2ioLM'
-        ];
+        $postdata = self::buildBodys(229, 559900.0, 0, $id, '', 'FARLIGHT84', 4138, 'id_ID', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkeW5hbWljU2t1SW5mbyI6IntcInNrdUlkXCI6XCJjb20ubWlyYWNsZWdhbWVzLnNvbGFybGFuZC5sb3Rjb2luXzQwMDBcIixcImV2ZW50UGFja2FnZVwiOlwiMFwiLFwiZGVub21JbWFnZVVybFwiOlwiaHR0cHM6Ly9jZG4xLmNvZGFzaG9wLmNvbS9pbWFnZXMvNzQzXzkwMTk2YjZlLTlkODYtNGM4Ni1hZmJiLTY4NTg0M2QyNzM5Y19GYXJsaWdodCA4NF9pbWFnZS80NzAwX0ZhcmxpZ2h0X0RpYW1vbmRzLnBuZ1wiLFwiZGVub21OYW1lXCI6XCI0NzAwIERpYW1vbmRzXCIsXCJkZW5vbUNhdGVnb3J5TmFtZVwiOlwiVW5jYXRlZ29yaXplZFwiLFwidGFnc1wiOltdLFwiY291bnRyeTJOYW1lXCI6XCJJRFwiLFwibHZ0SWRcIjo0MTM4fSJ9.i442v0Nxnnq09y0r5V9N-xJ6w4x5bd9jhqExylX_u7s', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkeW5hbWljU2t1SW5mbyI6IntcInBjSWRcIjoyMjAsXCJwcmljZVwiOjU1OTkwMC4wLFwiY3VycmVuY3lcIjpcIklEUlwiLFwiYXBpUHJpY2VcIjo1NTk5MDAuMCxcImFwaVByaWNlQ3VycmVuY3lcIjpcIklEUlwiLFwicHJpY2VCZWZvcmVUYXhcIjo1MDQ0MTQuMCxcInRheEFtb3VudFwiOjU1NDg2LjAsXCJza3VJZFwiOlwiY29tLm1pcmFjbGVnYW1lcy5zb2xhcmxhbmQubG90Y29pbl80MDAwXCIsXCJsdnRJZFwiOjQxMzh9In0.RXIVBNGby3DdMmpjoqAjDWfyLserZaZ0Ajshqp2ioLM');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -441,15 +307,7 @@ class ApiGames
 
     public function FOOTBALL_MASTER($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 185403,
-            'voucherPricePoint.price'           => 1000000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => 'FOOTBALL_MASTER',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(185403, 1000000.0000, 0, $id, '', 'FOOTBALL_MASTER', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -464,15 +322,7 @@ class ApiGames
 
     public function FREEFIRE($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 28153,
-            'voucherPricePoint.price'           => 1000000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => 'FREEFIRE',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(28153, 1000000.0000, 0, $id, '', 'FREEFIRE', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -487,15 +337,7 @@ class ApiGames
 
     public function GENSHIN_IMPACT($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 116118,
-            'voucherPricePoint.price'           => 815000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => $otherid,
-            'voucherTypeName'                   => 'GENSHIN_IMPACT',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(116118, 815000.0000, 0, $id, $otherid, 'GENSHIN_IMPACT', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -510,15 +352,7 @@ class ApiGames
 
     public function HAGO($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 16153,
-            'voucherPricePoint.price'           => 544500.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => $otherid,
-            'voucherTypeName'                   => 'HAGO',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(16153, 544500.0000, 0, $id, $otherid, 'HAGO', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -533,15 +367,7 @@ class ApiGames
 
     public function IDENTITY_V($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 59703,
-            'voucherPricePoint.price'           => 725000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => $otherid,
-            'voucherTypeName'                   => 'IDENTITY_V',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(59703, 725000.0000, 0, $id, $otherid, 'IDENTITY_V', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -556,15 +382,7 @@ class ApiGames
 
     public function ZLONGAME($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 25528,
-            'voucherPricePoint.price'           => 739000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => 'ZLONGAME',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(25528, 739000.0000, 0, $id, '', 'ZLONGAME', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -579,15 +397,7 @@ class ApiGames
 
     public function WILD_RIFT($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 372111,
-            'voucherPricePoint.price'           => 360000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => 'WILD_RIFT',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(372111, 360000.0000, 0, $id, '', 'WILD_RIFT', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -602,15 +412,7 @@ class ApiGames
 
     public function NETEASE_LIFEAFTER($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 45798,
-            'voucherPricePoint.price'           => 1098977.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => $otherid,
-            'voucherTypeName'                   => 'NETEASE_LIFEAFTER',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(45798, 1098977.0000, 0, $id, $otherid, 'NETEASE_LIFEAFTER', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -625,15 +427,7 @@ class ApiGames
 
     public function MARVEL_DUEL($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 155959,
-            'voucherPricePoint.price'           => 739000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => 'MARVEL_DUEL',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(155959, 739000.0000, 0, $id, '', 'MARVEL_DUEL', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -648,15 +442,7 @@ class ApiGames
 
     public function MOBILE_LEGENDS($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 27684,
-            'voucherPricePoint.price'           => 527250.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => $otherid,
-            'voucherTypeName'                   => 'MOBILE_LEGENDS',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(27684, 527250.0000, 0, $id, $otherid, 'MOBILE_LEGENDS', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -671,16 +457,7 @@ class ApiGames
 
     public function ADVENTURE($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 36359,
-            'voucherPricePoint.price'           => 739000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => $otherid,
-            'voucherTypeName'                   => 'ADVENTURE',
-            'voucherTypeId'                     => 47,
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(36359, 739000.0000, 0, $id, $otherid, 'ADVENTURE', '', 'id_ID', '', '', 47);
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -695,15 +472,7 @@ class ApiGames
 
     public function OURPALM($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 16273,
-            'voucherPricePoint.price'           => 550000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => preg_replace('/\D/', '', $otherid),
-            'voucherTypeName'                   => 'OURPALM',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(16273, 550000.0000, 0, $id, preg_replace('/\D/', '', $otherid), 'OURPALM', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -718,15 +487,7 @@ class ApiGames
 
     public function ONE_PUNCH_MAN($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 77832,
-            'voucherPricePoint.price'           => 5500000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => $otherid,
-            'voucherTypeName'                   => 'ONE_PUNCH_MAN',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(77832, 5500000.0000, 0, $id, $otherid, 'ONE_PUNCH_MAN', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -741,15 +502,7 @@ class ApiGames
 
     public function ONMYOJI_ARENA($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 46466,
-            'voucherPricePoint.price'           => 706000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => 'ONMYOJI_ARENA',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(46466, 706000.0000, 0, $id, '', 'ONMYOJI_ARENA', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -764,15 +517,7 @@ class ApiGames
 
     public function POINT_BLANK($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 54790,
-            'voucherPricePoint.price'           => 550000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => 'POINT_BLANK',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(54790, 550000.0000, 0, $id, '', 'POINT_BLANK', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -787,15 +532,7 @@ class ApiGames
 
     public function GRAVITY_RAGNAROK_M($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 414041,
-            'voucherPricePoint.price'           => 1519050.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => $otherid,
-            'voucherTypeName'                   => 'GRAVITY_RAGNAROK_M',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(414041, 1519050.0000, 0, $id, $otherid, 'GRAVITY_RAGNAROK_M', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -810,15 +547,7 @@ class ApiGames
 
     public function RAGNAROK_X($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 195837,
-            'voucherPricePoint.price'           => 1000000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => $otherid,
-            'voucherTypeName'                   => 'RAGNAROK_X',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(195837, 1000000.0000, 0, $id, $otherid, 'RAGNAROK_X', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -833,15 +562,7 @@ class ApiGames
 
     public function SAUSAGE_MAN($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 256634,
-            'voucherPricePoint.price'           => 1599000.0,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => 'global-release',
-            'voucherTypeName'                   => 'SAUSAGE_MAN',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(256634, 1599000.0000, 0, $id, 'global-release', 'SAUSAGE_MAN', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -856,15 +577,7 @@ class ApiGames
 
     public function SPEEDDRIFTERS($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 12861,
-            'voucherPricePoint.price'           => 1000000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => 'SPEEDDRIFTERS',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(12861, 1000000.0000, 0, $id, '', 'SPEEDDRIFTERS', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -879,15 +592,7 @@ class ApiGames
 
     public function SUPER_MECHA_CHAMPIONS($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 37815,
-            'voucherPricePoint.price'           => 706000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => 'SUPER_MECHA_CHAMPIONS',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(37815, 706000.0000, 0, $id, '', 'SUPER_MECHA_CHAMPIONS', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -902,15 +607,7 @@ class ApiGames
 
     public function SUPER_SUS($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 266162,
-            'voucherPricePoint.price'           => 681000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => 'SUPER_SUS',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(266162, 681000.0000, 0, $id, '', 'SUPER_SUS', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -925,15 +622,7 @@ class ApiGames
 
     public function VALORANT($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 950605,
-            'voucherPricePoint.price'           => 739000.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => 'VALORANT',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(950605, 739000.0000, 0, $id, '', 'VALORANT', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -948,15 +637,7 @@ class ApiGames
 
     public function NAVER_Z_CORPORATION($id, $otherid = '')
     {
-        $postdata = [
-            'voucherPricePoint.id'              => 937273,
-            'voucherPricePoint.price'           => 1082050.0000,
-            'voucherPricePoint.variablePrice'   => 0,
-            'user.userId'                       => $id,
-            'user.zoneId'                       => '',
-            'voucherTypeName'                   => 'NAVER_Z_CORPORATION',
-            'shopLang'                          => 'id_ID'
-        ];
+        $postdata = self::buildBodys(937273, 1082050.0000, 0, $id, '', 'NAVER_Z_CORPORATION', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -967,6 +648,25 @@ class ApiGames
                 return json_encode(['status' => 400, 'msg' => 'Invalid ID']);
             }
         }
+    }
+
+    protected function buildBodys($vppId, $vppPrice, $vppvarPrice, $userId, $zoneId, $voucherTypeName, $lvtId, $shopLang, $dynamicSkuToken = '', $pricePointDynamicSkuToken = '', $voucherTypeId = '')
+    {
+        $postdata = [
+            'voucherPricePoint.id'              => $vppId,
+            'voucherPricePoint.price'           => $vppPrice,
+            'voucherPricePoint.variablePrice'   => $vppvarPrice,
+            'user.userId'                       => $userId,
+            'user.zoneId'                       => $zoneId,
+            'voucherTypeName'                   => $voucherTypeName,
+            'lvtId'                             => $lvtId,
+            'shopLang'                          => $shopLang,
+            'dynamicSkuToken'                   => $dynamicSkuToken,
+            'pricePointDynamicSkuToken'         => $pricePointDynamicSkuToken,
+            'voucherTypeId'                     => $voucherTypeId
+        ];
+
+        return $postdata;
     }
 
     protected function buildHeaders($provider)
