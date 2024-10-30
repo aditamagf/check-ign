@@ -22,17 +22,20 @@ Farlight 84                             = FARLIGHT84                12787216
 Football Master 2                       = FOOTBALL_MASTER           SXM2_soccer2_prd_296_ia8kvv
 Free Fire                               = FREEFIRE                  116502997
 Genshin Impact                          = GENSHIN_IMPACT            700001772 | os_euro (Europe)
+Growtopia                               = GROWTOPIA                 Mrshadnic
 Hago                                    = HAGO                      31148107
 Identity V                              = IDENTITY_V                839263 | 2001 (Asia)
 Laplace M                               = ZLONGAME                  500218273
 League of Legends: Wild Rift            = WILD_RIFT                 Westbourne#SEA
 LifeAfter                               = NETEASE_LIFEAFTER         22512309 | 520006 (MileStone)
+Love and Deepspace                      = LOVE_AND_DEEPSPACE        81001445172
 MARVEL Duel                             = MARVEL_DUEL               3939705020
 Mobile Legends: Bang Bang               = MOBILE_LEGENDS            604210151 | 8425
 Mobile Legends: Adventure               = ADVENTURE                 27968096 | 70284
 MU Origin 2                             = OURPALM                   78123282 | S651
 ONE PUNCH MAN: The Strongest            = ONE_PUNCH_MAN             444470_310001 | 310001
 Onmyoji Arena                           = ONMYOJI_ARENA             3022022128
+Pixel Gun 3D                            = PIXEL_GUN_3D              198180845
 Point Blank                             = POINT_BLANK               febiantolie
 Ragnarok M: Eternal Love Big Cat Coin   = GRAVITY_RAGNAROK_M        4297559571 | 90001 (Eternal Love)
 Ragnarok X: Next Generation             = RAGNAROK_X                4611687693683257090 | 2031 (Golden Route)
@@ -41,6 +44,8 @@ Speed Drifters                          = SPEEDDRIFTERS             118223838138
 Super Mecha Champions                   = SUPER_MECHA_CHAMPIONS     1943687
 Super SUS                               = SUPER_SUS                 15916605
 VALORANT                                = VALORANT                  Diezyyy#666
+War Planet Online                       = WAR_PLANET_ONLINE         mdc:9dd2
+Watcher of Realms                       = WATCHER_OF_REALMS         6573780 | 50088
 ZEPETO                                  = NAVER_Z_CORPORATION       zepeto
 
 */
@@ -350,6 +355,21 @@ class ApiGames
         }
     }
 
+    public function GROWTOPIA($id, $otherid = '')
+    {
+        $postdata = self::buildBodys(398701, 800000.0000, 0, $id, '', 'GROWTOPIA', '', 'id_ID', '', '');
+        $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
+        if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
+            return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
+        } else {
+            if ($response['success'] && empty($response['errorMsg'])) {
+                return json_encode(['status' => 200, 'nickname' => urldecode($response['confirmationFields']['username'])]);
+            } else {
+                return json_encode(['status' => 400, 'msg' => 'Invalid ID or Server']);
+            }
+        }
+    }
+
     public function HAGO($id, $otherid = '')
     {
         $postdata = self::buildBodys(16153, 544500.0000, 0, $id, $otherid, 'HAGO', '', 'id_ID', '', '');
@@ -413,6 +433,21 @@ class ApiGames
     public function NETEASE_LIFEAFTER($id, $otherid = '')
     {
         $postdata = self::buildBodys(45798, 1098977.0000, 0, $id, $otherid, 'NETEASE_LIFEAFTER', '', 'id_ID', '', '');
+        $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
+        if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
+            return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
+        } else {
+            if ($response['success'] && empty($response['errorMsg'])) {
+                return json_encode(['status' => 200, 'nickname' => urldecode($response['confirmationFields']['username'])]);
+            } else {
+                return json_encode(['status' => 400, 'msg' => 'Invalid ID or Server']);
+            }
+        }
+    }
+
+    public function LOVE_AND_DEEPSPACE($id, $otherid = '')
+    {
+        $postdata = self::buildBodys(125, 799000.0, 0, $id, '', 'INFOLD_GAMES-LOVE_AND_DEEPSPACE', 11684, 'id_ID', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkeW5hbWljU2t1SW5mbyI6IntcInNrdUlkXCI6XCI2XzEwMDVcIixcImV2ZW50UGFja2FnZVwiOlwiMFwiLFwiZGVub21JbWFnZVVybFwiOlwiaHR0cHM6Ly9jZG4xLmNvZGFzaG9wLmNvbS9pbWFnZXMvOTE2XzQ0Y2MyNmU3LWU3NDctNDk4NS04MzQ1LWZmODFjMGUwM2QxN19MT1ZFIEFORCBERUVQU1BBQ0VfaW1hZ2UvMzI4MCBDcnlzdGFscy5wbmdcIixcImRlbm9tTmFtZVwiOlwiMzI4MCBDcnlzdGFscys3MjAgRGlhbW9uZHNcIixcImRlbm9tQ2F0ZWdvcnlOYW1lXCI6XCJDcnlzdGFsXCIsXCJ0YWdzXCI6W10sXCJjb3VudHJ5Mk5hbWVcIjpcIklEXCIsXCJsdnRJZFwiOjExNjg0LFwiZGVmYXVsdFByaWNlXCI6Nzk5MDAwLjAsXCJkZWZhdWx0Q3VycmVuY3lcIjpcIklEUlwiLFwiYWRkaXRpb25hbEluZm9cIjp7XCJEeW5hbWljU2t1UHJvbW9EZXRhaWxcIjpcIm51bGxcIixcIkxveWFsdHlDdXJyZW5jeURldGFpbFwiOlwie1xcXCJwcmljaW5nU2NoZW1lXFxcIjpcXFwicGFpZF9jdXJyZW5jeVxcXCIsXFxcImxveWFsdHlFYXJuZWRBbW91bnRcXFwiOjAuMCxcXFwibG95YWx0eUJ1cm5lZEFtb3VudFxcXCI6MC4wfVwifX0ifQ.9qYXDANw-mvEGUDZwJWYHow4xe1aMy27ATQ3HwRMpqc', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkeW5hbWljU2t1SW5mbyI6IntcInBjSWRcIjoyMjAsXCJwcmljZVwiOjc5OTAwMC4wLFwiY3VycmVuY3lcIjpcIklEUlwiLFwiYXBpUHJpY2VcIjo3OTkwMDAuMCxcImFwaVByaWNlQ3VycmVuY3lcIjpcIklEUlwiLFwiZGlzY291bnRQcmljZVwiOjc5OTAwMC4wLFwicHJpY2VCZWZvcmVUYXhcIjo3MTk4MjAuMCxcInRheEFtb3VudFwiOjc5MTgwLjAsXCJza3VJZFwiOlwiNl8xMDA1XCIsXCJsdnRJZFwiOjExNjg0fSJ9.egPFavIM4u6tfG5wjYyCwXWY8IQZkLF4UbnqdOzHpGc', 423);
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -503,6 +538,21 @@ class ApiGames
     public function ONMYOJI_ARENA($id, $otherid = '')
     {
         $postdata = self::buildBodys(46466, 706000.0000, 0, $id, '', 'ONMYOJI_ARENA', '', 'id_ID', '', '');
+        $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
+        if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
+            return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
+        } else {
+            if ($response['success'] && empty($response['errorMsg'])) {
+                return json_encode(['status' => 200, 'nickname' => urldecode($response['confirmationFields']['username'])]);
+            } else {
+                return json_encode(['status' => 400, 'msg' => 'Invalid ID']);
+            }
+        }
+    }
+
+    public function PIXEL_GUN_3D($id, $otherid = '')
+    {
+        $postdata = self::buildBodys(410, 788767.0, 0, $id, '', 'PIXEL_GUN_3D', 11461, 'id_ID', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkeW5hbWljU2t1SW5mbyI6IntcInNrdUlkXCI6XCIyMDE1OjIyMDBcIixcImV2ZW50UGFja2FnZVwiOlwiMFwiLFwiZGVub21JbWFnZVVybFwiOlwiXCIsXCJkZW5vbU5hbWVcIjpcIjIyMDAgR2Vtc1wiLFwiZGVub21DYXRlZ29yeU5hbWVcIjpcIkdlbXNcIixcInRhZ3NcIjpbXSxcImNvdW50cnkyTmFtZVwiOlwiSURcIixcImx2dElkXCI6MTE0NjEsXCJkZWZhdWx0UHJpY2VcIjo3ODg3NjYuMCxcImRlZmF1bHRDdXJyZW5jeVwiOlwiSURSXCIsXCJhZGRpdGlvbmFsSW5mb1wiOntcIkR5bmFtaWNTa3VQcm9tb0RldGFpbFwiOlwibnVsbFwiLFwiTG95YWx0eUN1cnJlbmN5RGV0YWlsXCI6XCJ7XFxcInByaWNpbmdTY2hlbWVcXFwiOlxcXCJwYWlkX2N1cnJlbmN5XFxcIixcXFwibG95YWx0eUVhcm5lZEFtb3VudFxcXCI6MC4wLFxcXCJsb3lhbHR5QnVybmVkQW1vdW50XFxcIjowLjB9XCJ9fSJ9.Ejfuo0gIJHP2drx6Q6Ax0L8U8la7iyyoeGRwz5kYCdM', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkeW5hbWljU2t1SW5mbyI6IntcInBjSWRcIjo5MDYsXCJwcmljZVwiOjc4ODc2Ny4wLFwiY3VycmVuY3lcIjpcIklEUlwiLFwiYXBpUHJpY2VcIjo3ODg3NjYuMCxcImFwaVByaWNlQ3VycmVuY3lcIjpcIklEUlwiLFwiZGlzY291bnRQcmljZVwiOjc4ODc2Ny4wLFwicHJpY2VCZWZvcmVUYXhcIjo3MTA2MDEuMCxcInRheEFtb3VudFwiOjc4MTY2LjAsXCJza3VJZFwiOlwiMjAxNToyMjAwXCIsXCJsdnRJZFwiOjExNDYxfSJ9.evXYDJkpDK2BCTSF3TxajPyQske4BpEkzAD6CSW-Vig', 355);
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
@@ -623,6 +673,36 @@ class ApiGames
     public function VALORANT($id, $otherid = '')
     {
         $postdata = self::buildBodys(950605, 739000.0000, 0, $id, '', 'VALORANT', '', 'id_ID', '', '');
+        $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
+        if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
+            return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
+        } else {
+            if ($response['success'] && empty($response['errorMsg'])) {
+                return json_encode(['status' => 200, 'nickname' => urldecode($response['confirmationFields']['username'])]);
+            } else {
+                return json_encode(['status' => 400, 'msg' => 'Invalid ID']);
+            }
+        }
+    }
+
+    public function WAR_PLANET_ONLINE($id, $otherid = '')
+    {
+        $postdata = self::buildBodys(424705, 535000.0000, 0, $id, '', 'WAR_PLANET_ONLINE', '', 'id_ID', '', '');
+        $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
+        if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
+            return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
+        } else {
+            if ($response['success'] && empty($response['errorMsg'])) {
+                return json_encode(['status' => 200, 'nickname' => urldecode($response['confirmationFields']['username'])]);
+            } else {
+                return json_encode(['status' => 400, 'msg' => 'Invalid ID']);
+            }
+        }
+    }
+
+    public function WATCHER_OF_REALMS($id, $otherid = '')
+    {
+        $postdata = self::buildBodys(963012, 819000.0000, 0, $id, $otherid, 'WATCHER_OF_REALMS', '', 'id_ID', '', '');
         $response = json_decode(self::Request(self::API_CODASHOP, $postdata, 'codashop'), true);
         if (isset($response['RESULT_CODE']) && $response['RESULT_CODE'] == '10001') {
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);

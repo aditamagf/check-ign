@@ -58,17 +58,20 @@ echo $api->FREEFIRE('<userID>');
 | Football Master 2                     | FOOTBALL_MASTER       |
 | Free Fire                             | FREEFIRE              |
 | Genshin Impact                        | GENSHIN_IMPACT        |
+| GROWTOPIA                             | GROWTOPIA             |
 | Hago                                  | HAGO                  |
 | Identity V                            | IDENTITY_V            |
 | Laplace M                             | ZLONGAME              |
 | League of Legends: Wild Rift          | WILD_RIFT             |
 | LifeAfter                             | NETEASE_LIFEAFTER     |
+| Love and Deepspace                    | LOVE_AND_DEEPSPACE    |
 | MARVEL Duel                           | MARVEL_DUEL           |
 | Mobile Legends: Bang Bang             | MOBILE_LEGENDS        |
 | Mobile Legends: Adventure             | ADVENTURE             |
 | MU Origin 2                           | OURPALM               |
 | ONE PUNCH MAN: The Strongest          | ONE_PUNCH_MAN         |
 | Onmyoji Arena                         | ONMYOJI_ARENA         |
+| Pixel Gun 3D                          | PIXEL_GUN_3D          |
 | Point Blank                           | POINT_BLANK           |
 | Ragnarok M: Eternal Love Big Cat Coin | GRAVITY_RAGNAROK_M    |
 | Ragnarok X: Next Generation           | RAGNAROK_X            |
@@ -77,6 +80,8 @@ echo $api->FREEFIRE('<userID>');
 | Super Mecha Champions                 | SUPER_MECHA_CHAMPIONS |
 | Super SUS                             | SUPER_SUS             |
 | VALORANT                              | VALORANT              |
+| War Planet Online                     | WAR_PLANET_ONLINE     |
+| Watcher of Realms                     | WATCHER_OF_REALMS     |
 | ZEPETO                                | NAVER_Z_CORPORATION   |
 
 ## License
