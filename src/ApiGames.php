@@ -333,7 +333,7 @@ class ApiGames
             return json_encode(['status' => 429, 'msg' => 'Too many attempts, plz wait 5 seconds']);
         } else {
             if ($response['success'] && empty($response['errorMsg'])) {
-                return json_encode(['status' => 200, 'nickname' => urldecode($response['confirmationFields']['roles'][0]['role'])]);
+                return json_encode(['status' => 200, 'nickname' => urldecode($response['confirmationFields']['username'])]);
             } else {
                 return json_encode(['status' => 400, 'msg' => 'Invalid ID']);
             }
