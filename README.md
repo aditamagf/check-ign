@@ -1,6 +1,5 @@
 ## PHP Library for Checking a Game Nickname Based on an Account ID
 
-[![CHECK IGN](https://img.shields.io/badge/CHECK%20IGN-September%2024%2C%202023-36ade1.svg)](https://github.com/aditamagf/check-ign)
 [![Packagist](https://img.shields.io/packagist/v/aditamagf/check-ign)](https://packagist.org/packages/aditamagf/check-ign)
 [![Total Downloads](https://img.shields.io/packagist/dt/aditamagf/check-ign)](https://packagist.org/packages/aditamagf/check-ign)
 [![CodeFactor](https://www.codefactor.io/repository/github/aditamagf/check-ign/badge)](https://www.codefactor.io/repository/github/aditamagf/check-ign)
@@ -8,7 +7,6 @@
 [![GitHub Forks](https://img.shields.io/github/forks/aditamagf/check-ign.svg)](https://github.com/aditamagf/check-ign/network)
 [![GitHub Stars](https://img.shields.io/github/stars/aditamagf/check-ign.svg)](https://github.com/aditamagf/check-ign/stargazers)
 [![License](https://img.shields.io/github/license/aditamagf/check-ign.svg)](https://github.com/aditamagf/check-ign/blob/main/LICENSE)
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Faditamagf%2Fcheck-ign&count_bg=%232BCCE3&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=views&edge_flat=false)](https://github.com/aditamagf/check-ign)
 
 ## :coffee: Buy Me a Coffee
 
@@ -24,14 +22,34 @@ composer require aditamagf/check-ign
 ## Usage
 
 ```php
-require('src/Games.php');
+require 'src/ApiGames.php'; // or rely on Composer autoload
 
 use Aditdev\ApiGames;
 
-$api = new ApiGames;
+$api = new ApiGames();
 
+// Modern API: returns an array
+//   success -> ['status' => 200, 'nickname' => '...']
+//   failure -> ['status' => 4xx|5xx, 'msg' => '...']
+$result = $api->check('MOBILE_LEGENDS', '<userID>', '<zoneID>');
+$result = $api->check('FREEFIRE', '<userID>');
+
+// Helpers
+$api->supports('MOBILE_LEGENDS'); // bool
+$api->games();                    // array of supported game codes
+
+// Legacy API (still supported): returns a JSON string
 echo $api->MOBILE_LEGENDS('<userID>', '<zoneID>');
 echo $api->FREEFIRE('<userID>');
+```
+
+### Adding or removing a game
+
+Games are defined as plain data in [`src/games.php`](src/games.php). Add or
+remove an entry there — no need to touch any class:
+
+```php
+'MOBILE_LEGENDS' => ['name' => 'Mobile Legends: Bang Bang', 'zone' => 'user'],
 ```
 
 ## List of Games
@@ -39,14 +57,12 @@ echo $api->FREEFIRE('<userID>');
 | Game                                  | Code                  |
 | ------------------------------------- | --------------------- |
 | 8 Ball Pool                           | EIGHT_BALL_POOL       |
-| Aether Gazer                          | AETHER_GAZER          |
 | Arena of Valor                        | AOV                   |
 | Asphalt 9: Legends                    | GAMELOFT_A9           |
 | AU2 Mobile                            | AU_TWO_MOBILE         |
 | Auto Chess                            | AUTO_CHESS            |
 | Azur Lane                             | AZUR_LANE             |
 | Badlanders                            | BAD_LANDERS           |
-| BarbarQ                               | ELECSOUL              |
 | Basketrio                             | BASKETRIO             |
 | Call of Duty Mobile                   | CALL_OF_DUTY          |
 | Captain Tsubasa: Dream Team           | CAPTAIN_TSUBASA       |
@@ -60,7 +76,6 @@ echo $api->FREEFIRE('<userID>');
 | Genshin Impact                        | GENSHIN_IMPACT        |
 | GROWTOPIA                             | GROWTOPIA             |
 | Hago                                  | HAGO                  |
-| Identity V                            | IDENTITY_V            |
 | Laplace M                             | ZLONGAME              |
 | League of Legends: Wild Rift          | WILD_RIFT             |
 | LifeAfter                             | NETEASE_LIFEAFTER     |
@@ -83,6 +98,10 @@ echo $api->FREEFIRE('<userID>');
 | War Planet Online                     | WAR_PLANET_ONLINE     |
 | Watcher of Realms                     | WATCHER_OF_REALMS     |
 | ZEPETO                                | NAVER_Z_CORPORATION   |
+
+## Star History
+
+<a href="https://www.star-history.com/?repos=aditamagf%2Fcheck-ign&type=date&legend=top-left"><picture><source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=aditamagf/check-ign&type=date&theme=dark&legend=top-left" /><source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=aditamagf/check-ign&type=date&legend=top-left" /><img alt="Star History Chart" src="https://api.star-history.com/chart?repos=aditamagf/check-ign&type=date&legend=top-left" /></picture></a>
 
 ## License
 
